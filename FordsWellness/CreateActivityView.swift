@@ -9,7 +9,24 @@ import SwiftUI
 
 struct CreateActivityView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("Activities")
+                .bold()
+                .font(.system(size: 40))
+            
+            
+            
+            Text("Activity Name")
+                .bold()
+                .foregroundStyle(.gray)
+            RoundedRectangle(cornerRadius: 10.0)
+                .stroke(.gray)
+                .frame(width: 300, height: 30)
+            
+            
+            
+            
+        }
     }
 }
 
