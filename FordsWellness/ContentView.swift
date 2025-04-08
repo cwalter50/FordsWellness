@@ -11,13 +11,27 @@ struct ContentView: View {
     
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
+        NavigationStack {
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
 
+            }
+            .navigationTitle("Fords Wellness")
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        CreateActivityView()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+
+                }
+            })
+            .padding()
         }
-        .padding()
+        
     }
 }
 
