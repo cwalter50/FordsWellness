@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct CreateActivityView: View {
-    @State var activityNameInput: String = ""
-    @State var teacherNameInput: String = ""
-    @State var studentCapacityInput: Int?
-    @State var roomNumberInput: Int?
+
+    @StateObject var vm: CreateActivityViewModel = CreateActivityViewModel()
     
     var body: some View {
         VStack(spacing: 13){
@@ -33,7 +31,7 @@ struct CreateActivityView: View {
                     .stroke(.gray)
                     .frame(width: 330, height: 30)
                     .overlay{
-                        TextField("activity_input", text: $activityNameInput, prompt: Text("Baking")
+                        TextField("activity_input", text: $vm.activityNameInput, prompt: Text("Baking")
                             .foregroundColor(.gray)
                             .bold()
                         )
@@ -56,7 +54,7 @@ struct CreateActivityView: View {
                         .stroke(.gray)
                         .frame(width: 40, height: 30)
                         .overlay{
-                            TextField("capacity_input", value: $studentCapacityInput, format: .number, prompt: Text("1")
+                            TextField("capacity_input", value: $vm.studentCapacityInput, format: .number, prompt: Text("1")
                                 .foregroundColor(.gray)
                                 .bold())
                             .foregroundColor(.black)
@@ -77,7 +75,7 @@ struct CreateActivityView: View {
                         .stroke(.gray)
                         .frame(width: 40, height: 30)
                         .overlay{
-                            TextField("room_input", value: $roomNumberInput, format: .number, prompt: Text("1")
+                            TextField("room_input", value: $vm.roomNumberInput, format: .number, prompt: Text("1")
                                 .foregroundColor(.gray)
                                 .bold())
                             .foregroundColor(.black)
@@ -97,7 +95,7 @@ struct CreateActivityView: View {
                         .stroke(.gray)
                         .frame(width: 140, height: 30)
                         .overlay{
-                            TextField("teacher_input", text: $teacherNameInput, prompt: Text("Mr. Walter")
+                            TextField("teacher_input", text: $vm.teacherNameInput, prompt: Text("Mr. Walter")
                                 .foregroundColor(.gray)
                                 .bold()
                             )
@@ -128,6 +126,9 @@ struct CreateActivityView: View {
                 }//end cancel button
                 
                 Button{
+                    Task {
+                        try await vm.writeToFirebase()
+                    }
                     
                 } label: {
                     RoundedRectangle(cornerRadius: 9.0)
