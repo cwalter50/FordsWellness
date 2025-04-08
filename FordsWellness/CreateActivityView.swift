@@ -22,6 +22,7 @@ struct CreateActivityView: View {
             RoundedRectangle(cornerRadius: 10.0)
                 .stroke(.gray)
                 .frame(width: 300, height: 30)
+
             
             
             
