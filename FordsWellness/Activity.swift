@@ -27,6 +27,16 @@ class Activity: Identifiable {
         self.students = students
     }
     
+    init(data: [String: Any]) {
+        self.activityName = data["activityName"] as? String ?? "No Name Found"
+        self.capacity = data["capacity"] as? Int ?? 30
+        self.id = data["id"] as? String ?? UUID().uuidString
+        self.roomNumber = data["roomNumber"] as? String ?? "Auditorium"
+        self.students = data["students"] as? [String] ?? ["No Students"]
+        self.teachers = data["teachers"] as? [String] ?? ["No Teacher Found"]
+        self.created = data["created"] as? Date ?? Date()
+    }
+    
     func toDictionaryValues() -> [String: Any] {
         return [
             "activityName": activityName,

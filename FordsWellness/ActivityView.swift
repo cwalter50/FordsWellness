@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActivityView: View {
     
-    @State var activity : Activity = Activity(activityName: "", capacity: 0)
+    @State var activity : Activity = Activity(activityName: "No Name", capacity: 3)
     @Binding var cardView : Bool
     
     var body: some View {

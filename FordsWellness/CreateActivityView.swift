@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CreateActivityView: View {
 
+    @Environment(\.dismiss) var dismiss
     @StateObject var vm: CreateActivityViewModel = CreateActivityViewModel()
     
     var body: some View {
@@ -112,7 +113,7 @@ struct CreateActivityView: View {
             
             HStack(spacing: 10){
                 Button{
-                    
+                    dismiss()
                 } label: {
                     RoundedRectangle(cornerRadius: 9.0)
                         .frame(width: 80, height: 30)
@@ -128,6 +129,7 @@ struct CreateActivityView: View {
                 Button{
                     Task {
                         try await vm.writeToFirebase()
+                        dismiss()
                     }
                     
                 } label: {
