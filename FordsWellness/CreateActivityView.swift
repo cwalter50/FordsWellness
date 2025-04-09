@@ -75,7 +75,7 @@ struct CreateActivityView: View {
                         .stroke(.gray)
                         .frame(width: 40, height: 30)
                         .overlay{
-                            TextField("room_input", value: $vm.roomNumberInput, format: .number, prompt: Text("1")
+                            TextField("room_input", text: $vm.roomNumberInput, prompt: Text("1")
                                 .foregroundColor(.gray)
                                 .bold())
                             .foregroundColor(.black)
@@ -141,6 +141,7 @@ struct CreateActivityView: View {
                                 .bold()
                         }//end overlay
                 }//end save button
+                .disabled(vm.activityNameInput == "" || vm.teacherNameInput == "")
             }//end hstack with buttons
             .padding(.vertical)
            

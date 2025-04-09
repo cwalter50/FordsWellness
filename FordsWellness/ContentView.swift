@@ -13,6 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
+            
             VStack {
                 ScrollView(.vertical) {
                     ActivityView(activity: Activity(activityName: "ACSL", roomNumber: "101", teachers: ["Chris Walter, Jennifer Mcnulty Brown"], capacity: 30, students: ["", "", "", ""]), cardView: $cardView)
