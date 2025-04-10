@@ -15,20 +15,17 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView(.vertical) {
-//                List {
-                    ForEach(vm.activities) {
+//                ScrollView(.vertical) {
+                List {
+                    ForEach(vm.activities, id: \.self) {
                         activity in
                         ActivityView(activity: activity, cardView: $cardView)
                     }
-                    ActivityView(activity: Activity(activityName: "ACSL", roomNumber: "101", teachers: ["Chris Walter, Jennifer Mcnulty Brown"], capacity: 30, students: ["", "", "", ""]), cardView: $cardView)
-//                    ActivityView(activity: Activity(activityName: "ACSL", roomNumber: "101", teachers: ["Chris Walter, Jennifer Mcnulty Brown"], capacity: 5, students: [""]), cardView: $cardView)
-//                    ActivityView(activity: Activity(activityName: "ACSL", roomNumber: "101", teachers: ["Chris Walter, Jennifer Mcnulty Brown"], capacity: 5, students: ["","",""]), cardView: $cardView)
-//                    ActivityView(activity: Activity(activityName: "ACSL", roomNumber: "101", teachers: ["Chris Walter, Jennifer Mcnulty Brown"], capacity: 2, students: ["", ""]), cardView: $cardView)
-//                    ActivityView(activity: Activity(activityName: "ACSL", roomNumber: "101", teachers: ["Chris Walter, Jennifer Mcnulty Brown"], capacity: 2, students: [""]), cardView: $cardView)
-//                    ActivityView(activity: Activity(activityName: "ACSL", roomNumber: "101", teachers: ["Chris Walter, Jennifer Mcnulty Brown"], capacity: 30, students: []), cardView: $cardView)
-//                    ActivityView(activity: Activity(activityName: "ACSL", roomNumber: "101", teachers: ["Chris Walter, Jennifer Mcnulty Brown"], capacity: 30, students: []), cardView: $cardView)
+//                    ActivityView(activity: Activity(activityName: "ACSL", roomNumber: "101", teachers: ["Chris Walter, Jennifer Mcnulty Brown"], capacity: 30, students: ["", "", "", ""]), cardView: $cardView)
+
                 }
+                .id(UUID()) // added unique iD so that the list redraws when updates happen to asset prices
+                .listStyle(.plain)
 
                 Button {
                     cardView.toggle()
