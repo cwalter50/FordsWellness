@@ -13,6 +13,7 @@ class AuthService: ObservableObject {
     @Published var currentUser: FirebaseAuth.User?
     
     static let shared = AuthService() // ensures singleton use of authservice in app.
+    
     init() {
         self.currentUser = Auth.auth().currentUser
         
@@ -41,9 +42,10 @@ class AuthService: ObservableObject {
     }
     // test
     
-    func signIn() async throws {
+    func signIn(email: String, password: String) async throws {
         do {
-            try await Auth.auth().signIn(withEmail: "test2@email.com", password: "123456")
+            let result = try await Auth.auth().signIn(withEmail: "\(email)", password: "\(password)")
+            self.currentUser = result.user
         } catch {
             print("DEBUG: error signing in: \(error)")
         }
@@ -54,7 +56,7 @@ class AuthService: ObservableObject {
         do {
             try Auth.auth().signOut()
         } catch {
-            print("DEBUG: Error signing out")
+            print("DEBUG: Error signing out: \(error)")
         }
         
     }

@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @StateObject var authService: AuthService = AuthService()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Group {
+            if authService.currentUser != nil {
+//            if AuthService.shared.currentUser != nil {
+                ContentView()
+            } else {
+                SignInView()
+            }
+        }
+        
     }
 }
 

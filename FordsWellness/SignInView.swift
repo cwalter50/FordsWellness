@@ -65,7 +65,9 @@ struct SignInView: View {
                         
                     }
                     Button("Login"){
-                        
+                        Task {
+                            try await AuthService.shared.signIn(email: username, password: password)
+                        }
                     }
                     .foregroundStyle(.white)
                     .frame(width:100, height:40)

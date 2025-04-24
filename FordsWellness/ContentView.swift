@@ -24,7 +24,7 @@ struct ContentView: View {
                 }
                 Button {
                     Task {
-                        try await AuthService.shared.signIn()
+                        try await AuthService.shared.signIn(email: "test2@email.com", password: "123456")
                     }
                     
                 } label: {
