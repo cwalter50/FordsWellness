@@ -10,11 +10,33 @@ import SwiftUI
 struct ContentView: View {
     @State var vm : ContentViewModel = ContentViewModel()
     
+    
     @State var cardView : Bool = false
     
     var body: some View {
         NavigationStack {
             VStack {
+                Button {
+                    AuthService.shared.createUser()
+                } label: {
+                    Text("Sign up")
+                }
+                Button {
+                    Task {
+                        try await AuthService.shared.signIn()
+                    }
+                    
+                } label: {
+                    Text("Sign in")
+                }
+                Button {
+                    AuthService.shared.signout()
+                } label: {
+                    Text("Sign out")
+                }
+                
+
+
 //                ScrollView(.vertical) {
                 List {
                     ForEach(vm.activities, id: \.self) {
