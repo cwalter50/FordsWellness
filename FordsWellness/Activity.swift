@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 
 
-class Activity: Identifiable, Hashable {
+struct ActivityModel: Identifiable {
     var activityName: String
     var roomNumber: String
     var teachers: [String]
@@ -60,13 +60,5 @@ class Activity: Identifiable, Hashable {
     
     
     
-}
-
-extension Activity: Equatable {
-    static func == (lhs: Activity, rhs: Activity) -> Bool {
-            return
-                lhs.activityName == rhs.activityName &&
-                lhs.id == rhs.id
-        }
 }
 

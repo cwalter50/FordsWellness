@@ -21,7 +21,7 @@ class CreateActivityViewModel: ObservableObject {
         
         let db = Firestore.firestore()
         
-        let newActivity = Activity(activityName: activityNameInput, roomNumber: roomNumberInput ?? "Auditorium", teachers: [teacherNameInput], capacity: studentCapacityInput ?? 30)
+        let newActivity = ActivityModel(activityName: activityNameInput, roomNumber: roomNumberInput, teachers: [teacherNameInput], capacity: studentCapacityInput ?? 30)
         let data = newActivity.toDictionaryValues()
 //        let docData: [String: Any] = [
 //          "stringExample": "Hello world!",

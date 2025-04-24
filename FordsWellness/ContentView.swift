@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var vm : ContentViewModel = ContentViewModel()
+    @StateObject var vm : ContentViewModel = ContentViewModel()
     
     
     @State var cardView : Bool = false
@@ -39,16 +39,15 @@ struct ContentView: View {
 
 //                ScrollView(.vertical) {
                 List {
-                    ForEach(vm.activities, id: \.self) {
+
+                    ForEach(vm.activities) {
                         activity in
                         ActivityView(activity: activity, cardView: $cardView)
                     }
-//                    ActivityView(activity: Activity(activityName: "ACSL", roomNumber: "101", teachers: ["Chris Walter, Jennifer Mcnulty Brown"], capacity: 30, students: ["", "", "", ""]), cardView: $cardView)
-
+                    
                 }
-                .id(UUID()) // added unique iD so that the list redraws when updates happen to asset prices
                 .listStyle(.plain)
-
+                
                 Button {
                     cardView.toggle()
                 } label: {
@@ -57,7 +56,7 @@ struct ContentView: View {
                         .foregroundStyle(Color.black)
                 }
                 .rotationEffect(Angle(degrees: 90))
-
+                
             }
             .navigationTitle("Fords Wellness")
             .toolbar(content: {
@@ -67,19 +66,13 @@ struct ContentView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
-
+                    
                 }
             })
             .padding()
-            .onAppear {
-                Task {
-                    try await vm.loadDataFromFirebase()
-                }
-                
-            }
         }
-        
     }
+    
 }
 
 #Preview {
