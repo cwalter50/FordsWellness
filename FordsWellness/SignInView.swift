@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignInView: View {
-
+// test
    // @EnvironmentObject var vm:MyDataViewModel
     @State private var username = ""
     @State private var password = ""
