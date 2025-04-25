@@ -9,12 +9,12 @@ import SwiftUI
 
 struct MainView: View {
     
-    @StateObject var authService: AuthService = AuthService()
+    
+    @EnvironmentObject var authService: AuthService
     
     var body: some View {
         Group {
             if authService.currentUser != nil {
-//            if AuthService.shared.currentUser != nil {
                 ContentView()
             } else {
                 SignInView()

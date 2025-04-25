@@ -12,12 +12,12 @@ import FirebaseAuth
 class AuthService: ObservableObject {
     @Published var currentUser: FirebaseAuth.User?
     
-    static let shared = AuthService() // ensures singleton use of authservice in app.
+//    static let shared = AuthService() // ensures singleton use of authservice in app.
     
     init() {
         self.currentUser = Auth.auth().currentUser
         
-        let listener = Auth.auth().addStateDidChangeListener { auth, user in
+        _ = Auth.auth().addStateDidChangeListener { auth, user in
             
             if user != nil {
                 self.currentUser = user

@@ -23,9 +23,11 @@ struct FordsWellnessApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    @StateObject var authService: AuthService = AuthService() // ensures singleton use of authservice in app.
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(authService)
         }
     }
 }
