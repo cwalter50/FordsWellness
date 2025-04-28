@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignInView: View {
 // test
-   // @EnvironmentObject var vm:MyDataViewModel
+    @EnvironmentObject var authService: AuthService
     @State private var username = ""
     @State private var password = ""
     @State private var wrongUsername = 0
@@ -66,7 +66,7 @@ struct SignInView: View {
                     }
                     Button("Login"){
                         Task {
-                            try await AuthService.shared.signIn(email: username, password: password)
+                            try await authService.signIn(email: username, password: password)
                         }
                     }
                     .foregroundStyle(.white)

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var vm : ContentViewModel = ContentViewModel()
-    
+    @EnvironmentObject var authService: AuthService
     
     @State var cardView : Bool = false
     
@@ -18,20 +18,20 @@ struct ContentView: View {
         NavigationStack {
             VStack {
                 Button {
-                    AuthService.shared.createUser()
+                    authService.createUser()
                 } label: {
                     Text("Sign up")
                 }
                 Button {
                     Task {
-                        try await AuthService.shared.signIn(email: "test2@email.com", password: "123456")
+                        try await authService.signIn(email: "test2@email.com", password: "123456")
                     }
                     
                 } label: {
                     Text("Sign in")
                 }
                 Button {
-                    AuthService.shared.signout()
+                    authService.signout()
                 } label: {
                     Text("Sign out")
                 }
