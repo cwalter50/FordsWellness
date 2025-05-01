@@ -22,11 +22,6 @@
 			path = FordsWellness;
 			sourceTree = "<group>";
 		};
-		38F808D82DBBE5DF0073AD58 /* Preview Content */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +42,6 @@
 			isa = PBXGroup;
 			children = (
 				38A59EF62D9EFB63005BD905 /* FordsWellness */,
-				38F808D82DBBE5DF0073AD58 /* Preview Content */,
 				38A59EF52D9EFB63005BD905 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,7 +71,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				38A59EF62D9EFB63005BD905 /* FordsWellness */,
-				38F808D82DBBE5DF0073AD58 /* Preview Content */,
 			);
 			name = FordsWellness;
 			packageProductDependencies = (

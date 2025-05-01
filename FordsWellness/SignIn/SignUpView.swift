@@ -8,11 +8,78 @@
 import SwiftUI
 
 struct SignUpView: View {
+    
+    
+    @State private var email = ""
+    @State private var password = ""
+    @State private var confirmpass = ""
+    @State private var name = ""
+    @State private var homeroom = ""
+    @State private var badpass = 0
+    
+    
     var body: some View {
         VStack {
-            Text("This is signup view. It should have a form for the user to fill out with info about themselves. It should email, password, confirm password, name, homeroom, . homeroom should be optional, because teachers and admin do not have homerooms.")
-            Text("This view should also have a button to click that will signup for a new account. After signup, they will be logged in")
-        }
+            Text("Sign Up")
+                .font(.largeTitle)
+                .bold()
+                .padding()
+            
+            TextField("Email", text: $email)
+            
+                .padding()
+                .frame(width: 300, height:50)
+                .background(Color.black.opacity(0.05))
+                .cornerRadius(10)
+                .onSubmit {
+                
+                    if !email.contains("@"){
+                        email += "@haverfordsd.net"
+                    }
+                    email = email.lowercased()
+                    
+            
+                }
+            
+            SecureField("Password", text: $password)
+                .padding()
+                .frame(width: 300, height:50)
+                .background(Color.black.opacity(0.05))
+                .cornerRadius(10)
+                .border(.red, width: CGFloat(badpass))
+            
+            SecureField("Confirm Password", text: $confirmpass)
+                .padding()
+                .frame(width: 300, height:50)
+                .background(Color.black.opacity(0.05))
+                .cornerRadius(10)
+                .border(.red, width: CGFloat(badpass))
+                .onSubmit {
+                    if !(confirmpass == password){
+                        badpass = 3
+                    }
+                    else{
+                        badpass = 0
+                    }
+                }
+
+            TextField("Homeroom", text: $homeroom)
+                .padding()
+                .frame(width: 300, height:50)
+                .background(Color.black.opacity(0.05))
+                .cornerRadius(10)
+                .onSubmit {
+                    if homeroom.contains(/\d+/){
+                        
+                    }
+                    else{
+                        homeroom = "Homeroom number only"
+                    }
+                }
+            
+          
+            
+                    }
         
     }
 }
