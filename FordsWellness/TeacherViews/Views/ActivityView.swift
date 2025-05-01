@@ -12,6 +12,8 @@ struct ActivityView: View {
     @State var activity : ActivityModel = ActivityModel(activityName: "No Name", capacity: 3)
     @Binding var cardView : Bool
     
+    
+    
     var body: some View {
         
         if cardView {

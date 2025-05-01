@@ -8,7 +8,6 @@
 import Foundation
 import Firebase
 
-
 struct ActivityModel: Identifiable {
     var activityName: String
     var roomNumber: String
@@ -17,6 +16,8 @@ struct ActivityModel: Identifiable {
     var students: [String]
     var id: String = UUID().uuidString
     var created: Date = Date()
+    
+    var teacherIDs: [String] = [String]() // this will be used to load all names of the teachers from UserInfo
     
     
     init(activityName: String, roomNumber: String = "Auditorium", teachers: [String] = [String](), capacity: Int, students: [String] = [String]()) {

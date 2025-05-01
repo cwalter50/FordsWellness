@@ -10,6 +10,7 @@ import SwiftUI
 struct SignInView: View {
 // test
     @EnvironmentObject var authService: AuthService
+    
     @State private var username = ""
     @State private var password = ""
     @State private var wrongUsername = 0
@@ -60,7 +61,7 @@ struct SignInView: View {
                     //  .cornerRadius(10)
                     
                     NavigationLink("Sign Up") {
-                        
+                        SignUpView()
                         //                        SignUpView()
                         
                     }
