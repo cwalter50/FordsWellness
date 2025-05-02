@@ -12,7 +12,7 @@ struct ActivityView: View {
     @State var activity : ActivityModel = ActivityModel(activityName: "No Name", capacity: 3)
     @Binding var cardView : Bool
     
-    
+    var isSelected: Bool = false
     
     var body: some View {
         
@@ -69,7 +69,7 @@ struct ActivityView: View {
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.orange)
-                    .shadow(color: .gray, radius: 5)
+                    .shadow(color: isSelected ? .yellow : .gray, radius: 5)
 //                    .frame(maxWidth: .infinity, maxHeight: 200)
             )
             .padding(5)
@@ -106,7 +106,7 @@ struct ActivityView: View {
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.white)
-                    .shadow(color: .gray, radius: 5)
+                    .shadow(color: isSelected ? .yellow : .gray, radius: 5)
             )
             .padding(5)
         }
