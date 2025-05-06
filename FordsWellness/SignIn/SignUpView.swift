@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    
+    @EnvironmentObject var authService: AuthService
     @State private var email = ""
     @State private var password = ""
     @State private var confirmpass = ""
@@ -76,7 +76,14 @@ struct SignUpView: View {
                         homeroom = "Homeroom number only"
                     }
                 }
-            
+            Button {
+                Task{
+                    try await authService.createUser(email: email, password: password, name: name, homeroom: homeroom)
+                }
+                
+            } label: {
+                Text("Sign up")
+            }
           
             
                     }

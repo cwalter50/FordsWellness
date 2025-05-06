@@ -11,8 +11,17 @@ import SwiftUI
 import Foundation
 
 enum Role: String {
-    case admin
-    case student
+    case admin = "Admin"
+    case student = "Student"
+    case teacher = "Teacher"
+}
+
+enum Class: String {
+    case freshman = "Freshman"
+    case softmore = "Softmore"
+    case junior = "Junior"
+    case senior = "Senior"
+    
 }
 
 struct UserInfo: Identifiable {

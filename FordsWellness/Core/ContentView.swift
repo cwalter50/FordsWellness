@@ -17,11 +17,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Button {
-                    authService.createUser()
-                } label: {
-                    Text("Sign up")
-                }
+                
                 Button {
                     Task {
                         try await authService.signIn(email: "test2@email.com", password: "123456")
@@ -34,6 +30,9 @@ struct ContentView: View {
                     authService.signout()
                 } label: {
                     Text("Sign out")
+                }
+                NavigationLink("Profile") {
+                    ProfileView()
                 }
                 
 
