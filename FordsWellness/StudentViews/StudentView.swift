@@ -36,37 +36,23 @@ struct StudentView: View {
     
     var body: some View {
         NavigationStack {
-            HStack(spacing: 0) {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Your Activities:")
-                            .font(.title3)
-                            .bold()
-                            .padding(.horizontal)
-                            .offset(x: -18)
-
-                        ForEach(activities) { activity in
-                            VStack(alignment: .leading, spacing: 1) {
-                                Text(activity.title)
-                                    .font(.headline)
-                                    .foregroundColor(.blue)
-                                Text(activity.date)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                
-                            }
-                            .padding()
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(12)
-                            .shadow(color: .black.opacity(0.50), radius: 3, x: 0, y: 2)
+            List {
+                Section(header: Text("Your Activities:").font(.title3).bold()) {
+                    ForEach(activities) { activity in
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text(activity.title)
+                                .font(.headline)
+                                .foregroundColor(.blue)
+                            Text(activity.date)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
                         }
+                        .padding(4)
                     }
-                    .padding(.leading)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color(UIColor.systemGroupedBackground))
+                    .onDelete(perform: deleteActivity)
                 }
-                .frame(maxWidth: .infinity)
             }
+            .listStyle(InsetGroupedListStyle())
             .navigationTitle("Welcome, \(username)!")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -82,11 +68,14 @@ struct StudentView: View {
             }
         }
     }
+    
+    func deleteActivity(at offsets: IndexSet) {
+        activities.remove(atOffsets: offsets)
+    }
 }
 
 #Preview {
     StudentView()
 }
-
 
 //        This is the view students see when they sign in. This view should display info about the signed in user. It should allow them to see activities that they signed up. It should also have a navigationLink to direct them to a signup for an activity View
