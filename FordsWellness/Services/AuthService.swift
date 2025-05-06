@@ -41,7 +41,7 @@ class AuthService: ObservableObject {
             
                 try await db.collection("UserInfo").document("\(StudentInfo.id)").setData(data)
               print("Document successfully written!")
-            
+            currentUserInfo = StudentInfo
             
         } catch {
             print("Error signing up \(error)")
@@ -50,11 +50,14 @@ class AuthService: ObservableObject {
         
     }
     // test
-    
+    @MainActor
     func signIn(email: String, password: String) async throws {
         do {
             let result = try await Auth.auth().signIn(withEmail: "\(email)", password: "\(password)")
             self.currentUser = result.user
+            let db = Firestore.firestore()
+            let userinfo = try await db.collection("UserInfo").document("\(result.user.uid)").getDocument()
+            currentUserInfo = UserInfo(data: userinfo.data() ?? ["" : ""])
         } catch {
             print("DEBUG: error signing in: \(error)")
         }

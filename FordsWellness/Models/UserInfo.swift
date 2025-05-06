@@ -43,6 +43,17 @@ struct UserInfo: Identifiable {
         self.email = email
     }
     
+    init(data: [String: Any]) {
+        self.name = data["name"] as? String ?? "No Name Found"
+        let foundrole = data["role"] as? String ?? "Student"
+        self.role = Role(rawValue: foundrole) ?? .student
+        self.id = data["id"] as? String ?? UUID().uuidString
+        self.year = data["year"] as? String ?? "9"
+        self.homeroom = data["homeroom"] as? String ?? "0"
+        self.email = data["email"] as? String ?? ""
+        self.created = data["created"] as? Date ?? Date()
+    }
+    
     func toDictionaryValues() -> [String: Any] {
         return [
             "name": name,
