@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import FirebaseAuth
 import Firebase
-
+@MainActor
 class AuthService: ObservableObject {
     @Published var currentUser: FirebaseAuth.User?
     @Published var currentUserInfo: UserInfo?
@@ -38,6 +38,7 @@ class AuthService: ObservableObject {
         }
     }
     
+    @MainActor
     func createUser(email: String, password: String, name: String, homeroom: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
