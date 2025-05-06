@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @EnvironmentObject var authService: AuthService
+    
     @AppStorage("confirmationOverride") var confirmationOverride = false
     
     @State var tempRole : Role = .student
@@ -130,7 +132,7 @@ struct ProfileView: View {
                 } else {
                     if (confirmationOverride) {
                         print("Sign Out")
-                        //                    authService.signout()
+//                        authService.signout()
                     } else {
                         confirmSignout = true
                     }
@@ -147,8 +149,9 @@ struct ProfileView: View {
             .alert("Confirm Signout.", isPresented: $confirmSignout, actions: {
                 Button("Sign Out") {
                     confirmSignout = false
+                    
                     print("Sign Out")
-                    //                        authService.signout()
+                    authService.signout()
                 }
                 Button("Don't Show Again") {
                     confirmationOverride = true

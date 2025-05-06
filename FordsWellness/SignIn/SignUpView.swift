@@ -46,14 +46,14 @@ struct SignUpView: View {
                 .frame(width: 300, height:50)
                 .background(Color.black.opacity(0.05))
                 .cornerRadius(10)
-                .border(.red, width: CGFloat(badpass))
+//                .border(.red, width: CGFloat(badpass))
             
             SecureField("Confirm Password", text: $confirmpass)
                 .padding()
                 .frame(width: 300, height:50)
                 .background(Color.black.opacity(0.05))
                 .cornerRadius(10)
-                .border(.red, width: CGFloat(badpass))
+//                .border(.red, width: CGFloat(badpass))
                 .onSubmit {
                     if !(confirmpass == password){
                         badpass = 3
