@@ -14,9 +14,18 @@ struct MainView: View {
     
     var body: some View {
         Group {
-            if authService.currentUser != nil {
-                ContentView()
-            } else {
+            if authService.currentUser != nil && authService.currentUserInfo?.role == .teacher {
+                TeacherView()
+            }
+            else if authService.currentUser != nil && authService.currentUserInfo?.role == .student {
+                StudentView()
+            }
+            else if authService.currentUser != nil && authService.currentUserInfo?.role == .admin
+            {
+                AdminView()
+            }
+            
+            else {
                 SignInView()
             }
         }
