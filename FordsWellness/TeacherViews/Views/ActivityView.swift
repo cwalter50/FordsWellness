@@ -118,7 +118,7 @@ struct ActivityView: View {
             returnStr += "\(teacher), "
         }
         
-        return String(returnStr[..<returnStr.lastIndex(of: ",")!])
+        return String(returnStr[..<(returnStr.lastIndex(of: ",") ?? returnStr.startIndex)])
     }
 }
 

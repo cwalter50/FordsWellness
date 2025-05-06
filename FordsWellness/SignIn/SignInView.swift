@@ -32,7 +32,7 @@ struct SignInView: View {
                     .foregroundColor(.white.opacity(0.15))
                 
                 RoundedRectangle(cornerRadius: 30)
-                    .frame(width:325,height:250)
+                    .frame(width:325,height:275)
                     .foregroundColor(.white.opacity(0.9))
                     .hoverEffect()
                 
