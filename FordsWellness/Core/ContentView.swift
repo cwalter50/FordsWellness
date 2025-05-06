@@ -35,6 +35,9 @@ struct ContentView: View {
                 } label: {
                     Text("Sign out")
                 }
+                NavigationLink("Profile") {
+                    ProfileView()
+                }
                 
 
 
