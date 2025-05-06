@@ -45,7 +45,7 @@ struct TeacherView: View {
                 
                 Spacer()
 
-                // ScrollView to list activities
+              
                 ScrollView {
                     VStack(spacing: 10) {
                         ForEach(activities, id: \.self) { activity in
@@ -74,7 +74,6 @@ struct TeacherView: View {
 
                 Spacer()
             }
-            .navigationTitle("Teacher View")
             .background(Color(UIColor.systemGray6))
         }
     }
