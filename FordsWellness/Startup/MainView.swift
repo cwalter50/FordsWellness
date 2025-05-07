@@ -15,14 +15,42 @@ struct MainView: View {
     var body: some View {
         Group {
             if authService.currentUser != nil && authService.currentUserInfo?.role == .teacher {
-                TeacherView()
+                TabView {
+                    TeacherView()
+                        .tabItem {
+                            Label("Teacher", systemImage: "house")
+                        }
+                    ProfileView()
+                        .tabItem {
+                            Label("Profile", systemImage: "person")
+                        }
+                }
+                
             }
             else if authService.currentUser != nil && authService.currentUserInfo?.role == .student {
-                StudentView()
+                TabView {
+                    StudentView()
+                        .tabItem {
+                            Label("Student", systemImage: "house")
+                        }
+                    ProfileView()
+                        .tabItem {
+                            Label("Profile", systemImage: "person")
+                        }
+                }
             }
             else if authService.currentUser != nil && authService.currentUserInfo?.role == .admin
             {
-                AdminView()
+                TabView {
+                    AdminView()
+                        .tabItem {
+                            Label("Admin", systemImage: "house")
+                        }
+                    ProfileView()
+                        .tabItem {
+                            Label("Profile", systemImage: "person")
+                        }
+                }
             }
             
             else {
