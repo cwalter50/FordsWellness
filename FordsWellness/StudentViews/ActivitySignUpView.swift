@@ -10,11 +10,11 @@ import SwiftUI
 struct ActivitySignUpView: View {
     @StateObject var vm: ContentViewModel = ContentViewModel()
     @EnvironmentObject var authService: AuthService
-
+    
     @State var cardView: Bool = false
     @State var showSubmit: Bool = false
     @State var selectedActivity: ActivityModel? = nil
-
+    
     var body: some View {
         VStack {
             NavigationStack {
@@ -33,7 +33,7 @@ struct ActivitySignUpView: View {
                         }
                     }
                     .listStyle(.plain)
-
+                    
                     Button {
                         cardView.toggle()
                     } label: {
@@ -47,14 +47,14 @@ struct ActivitySignUpView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button{
-//                            Add detail page or message here
-//                            .presentationCompactAdaptation(.sheet)
+                            //                            Add detail page or message here
+                            //                            .presentationCompactAdaptation(.sheet)
                         } label: {
                             Text("Details")
                                 .padding()
                         }
                     }
-
+                    
                     ToolbarItem(placement: .topBarTrailing) {
                         if let selected = selectedActivity {
                             Button("Submit") {
@@ -80,9 +80,9 @@ struct ActivitySignUpView: View {
             }
         }
     }
-}
-
-#Preview {
-    ActivitySignUpView()
-        .environmentObject(AuthService())
+    
+//    #Preview {
+//        ActivitySignUpView()
+//            .environmentObject(AuthService())
+//    }
 }
